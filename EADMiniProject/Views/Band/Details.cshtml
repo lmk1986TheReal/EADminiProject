@@ -1,0 +1,59 @@
+﻿@model EADMiniProject.Models.Band
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Band</h4>
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.BandName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BandName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumberofBandMembers)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumberofBandMembers)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nationality)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nationality)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.YearsActive)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.YearsActive)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Genre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Genre)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>

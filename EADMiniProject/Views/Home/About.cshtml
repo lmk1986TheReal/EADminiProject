@@ -1,0 +1,28 @@
+﻿@model IEnumerable<EADMiniProject.ViewModels.NationalityCounts>
+
+@{
+    ViewBag.Title = "Band Stats";
+}
+
+<h2>Guitarists</h2>
+
+<table>
+    <tr>
+        <th>
+            Amount of entries per each Nationilty in the database 
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationality )
+            </td>
+            <td>
+                @item.NationalityCount
+            </td>
+        </tr>
+    }
+</table>

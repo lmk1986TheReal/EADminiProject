@@ -1,0 +1,73 @@
+﻿@model IEnumerable<EADMiniProject.Models.Musician>
+
+@{
+    ViewBag.Title = "Musicians";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add New Musician", "Create")
+</p>
+
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find our Musicians by Name, Instrument or Genre: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.MusicianFirstNameSortParam})
+        </th>
+        <th>
+            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.MusicianLastNameSortParam})
+        </th>
+        <th>
+            @Html.ActionLink("Nationality", "Index", new { sortOrder = ViewBag.NatSortParm})
+        </th>
+        <th>
+            @Html.ActionLink("Years Active", "Index", new { sortOrder = ViewBag.YearsActiveSortParam})
+        </th>
+        <th>
+            @Html.ActionLink("Primary Instrument", "Index", new { sortOrder = ViewBag.PrimaryInstrumentSortParam})
+        </th>
+        <th>
+            @Html.ActionLink("Genre", "Index", new { sortOrder = ViewBag.GenreSortParam})
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MusicianFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MusicianLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nationality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YearsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrimaryInstrument)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

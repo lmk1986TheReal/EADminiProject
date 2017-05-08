@@ -1,0 +1,65 @@
+﻿@model IEnumerable<EADMiniProject.Models.Band>
+
+
+@{
+    ViewBag.Title = "Bands";
+}
+
+<h2>Bands</h2>
+
+<p>
+    @Html.ActionLink("Add New Band", "Create")
+</p>
+@using (Html.BeginForm("Index", "Band", FormMethod.Get))
+{
+    <p>
+        Find our Bands by Name or Genre: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Band Name", "Index", new { sortOrder = ViewBag.BandNameSortParm})
+        </th>
+        <th>
+            @Html.ActionLink("Number of Members", "Index", new { sortOrder = ViewBag.MembersSortParm})
+        </th>
+        <th>
+            @Html.ActionLink("Nationality", "Index", new { sortOrder = ViewBag.NatSortParm})
+        </th>
+        <th>
+            @Html.ActionLink("Years Active", "Index", new { sortOrder = ViewBag.YearsActiveSortParam})
+        </th>
+        <th>
+            @Html.ActionLink("Genre", "Index", new { sortOrder = ViewBag.GenreSortParam})
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BandName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberofBandMembers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nationality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YearsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
